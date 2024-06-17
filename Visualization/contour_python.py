@@ -1,7 +1,7 @@
-
 import numpy as np
 import xarray as xr
 import matplotlib.pyplot as plt
+#cartopy package is for geological configuaration plotting
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 from matplotlib.patches import Polygon
@@ -10,8 +10,10 @@ from matplotlib.patches import Polygon
 casename = "310 Ma Annual Mean Temperature"
 
 # Read in data
-myfile = xr.open_dataset("/Users/yangduo/Downloads/19920662/High_Resolution_Climate_Simulation_Dataset_540_Myr.nc")
+myfile = xr.open_dataset("/Path to nc file/High_Resolution_Climate_Simulation_Dataset_540_Myr.nc")
 T = myfile["T"]
+#LANDFRAC is for plotting the geological configuration, see function defined below
+#This steps is pretty optional and it really depends on what dataset you have in your hand; the reason I did this step is because this script is basically transfered from the corresponding NCL file.
 LANDFRAC = myfile["LANDFRAC"]
 lat = myfile["lat"]
 lon = myfile["lon"]
@@ -19,7 +21,7 @@ lon = myfile["lon"]
 # Compute the annual mean temperature by averaging over the 'month' dimension
 T_annual = T.mean(dim="month")
 
-# Function to add paleo outlines
+# Function to add geological configuration
 def add_paleo_outline(ax, oro, lat, lon):
     for i in range(len(lat)):
         for j in range(len(lon)):
@@ -38,12 +40,13 @@ print(f"Processing case: {casename}")
 
 # Plot
 ax.set_title(f"{casename}", fontsize=10)
-#ax.coastlines()
 
+#ax.countourf is used for plotting the countour on the plot and add_paleo_outline function is used to create the geological configuration via creating the mask.
 try:
-    im = ax.contourf(lon, lat, T_annual.isel(simulation=24), levels=np.arange(-24, 44, 4), transform=ccrs.PlateCarree(), cmap="RdYlBu", extend='both')
+    #Cmap could be changed to anyother colors. Check matplotlib for more options.
+    im = ax.contourf(lon, lat, T_annual.isel(simulation=24), levels=np.arange(-24, 44, 4), transform=ccrs.PlateCarree(), cmap="BuYlRd", extend='both')
     
-    # Mask
+    # Mask created at coordinates where the land fraction is greater than 0.5. In this case, we could place one polygon at the point.
     oro = np.where(LANDFRAC.isel(simulation=24).values > 0.5, 1, 0)
     add_paleo_outline(ax, oro, lat, lon)
     
