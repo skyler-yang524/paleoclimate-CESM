@@ -1,0 +1,356 @@
+[skyler1@nia-login05 skyler1]$ cd /scratch/p/pheron/skyler1/cesm_cases/test.620
+[skyler1@nia-login05 test.620]$ ls
+archive_metadata       case.qstatus  check_case        env_build.xml          env_run.xml       preview_namelists  Tools
+Buildconf              case.setup    check_input_data  env_case.xml           env_workflow.xml  preview_run        xmlchange
+case.build             CaseStatus    env_archive.xml   env_mach_pes.xml       LockedFiles       README.case        xmlquery
+case.cmpgen_namelists  case.submit   env_batch.xml     env_mach_specific.xml  pelayout          SourceMods
+[skyler1@nia-login05 test.620]$ ./case.setup
+ERROR: inputdata root is not a directory or is not readable: /scratch/p/pheron/skyler1/cesm/inputdata
+[skyler1@nia-login05 test.620]$ mkdir /scratch/p/pheron/skyler1/cesm/inputdata
+[skyler1@nia-login05 test.620]$ cd /scratch/p/pheron/skyler1/cesm/inputdata
+[skyler1@nia-login05 inputdata]$ pwd
+/scratch/p/pheron/skyler1/cesm/inputdata
+[skyler1@nia-login05 inputdata]$ cd $SCRATCH
+[skyler1@nia-login05 skyler1]$ cd test.620
+bash: cd: test.620: No such file or directory
+[skyler1@nia-login05 skyler1]$ cd ~/test.620
+bash: cd: /home/p/pheron/skyler1/test.620: No such file or directory
+[skyler1@nia-login05 skyler1]$ cd $SCRATCH/.test.620
+bash: cd: /scratch/p/pheron/skyler1/.test.620: No such file or directory
+[skyler1@nia-login05 skyler1]$ cd /scratch/p/pheron/skyler1/cesm_cases/test.620
+[skyler1@nia-login05 test.620]$ ./case.setup
+ERROR: module command /scinet/niagara/software/2018a/lmod/lmod/libexec/lmod python load NiaEnv/2018a perl/5.20.3 cmake/3.10.3 git/2.16.3 subversion/1.9.7 intel/2018.3 openmpi/3.1.1 hdf5-mpi/1.10.2 netcdf-mpi/4.6.1 pnetcdf/1.9.0 failed with message:
+Lmod has detected the following error: The following module(s) are unknown: "git/2.16.3"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore-cache load "git/2.16.3"
+
+Also make sure that all modulefiles written in TCL start with the string #%Module
+[skyler1@nia-login05 test.620]$ module --ignore-cache load "git/2.16.3"
+Lmod has detected the following error:  The following module(s) are unknown: "git/2.16.3"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "git/2.16.3"
+
+Also make sure that all modulefiles written in TCL start with the string #%Module
+
+
+
+[skyler1@nia-login05 test.620]$ module spider git
+
+------------------------------------------------------------------------------------------------------------------------------
+  git: git/2.39.1
+------------------------------------------------------------------------------------------------------------------------------
+    Description:
+      Git is a free and open source distributed version control system.
+
+
+     Other possible modules matches:
+        git-annex, git-lfs, libgit2
+
+    This module can be loaded directly: module load git/2.39.1
+
+    Help:
+      
+      Git is a free and open source distributed version control system
+      designed to handle everything from small to very large projects with
+      speed and efficiency.
+      
+      Homepage: http://git-scm.com
+      
+
+------------------------------------------------------------------------------------------------------------------------------
+  To find other possible module matches execute:
+
+[skyler1@nia-login05 test.620]$ module load git/2.39.1
+[skyler1@nia-login05 test.620]$ cd /scratch/p/pheron/skyler1/cesm/cime/config/cesm/machines/config_machines.xml 
+bash: cd: /scratch/p/pheron/skyler1/cesm/cime/config/cesm/machines/config_machines.xml: Not a directory
+[skyler1@nia-login05 test.620]$ cd $SCRATCH
+[skyler1@nia-login05 skyler1]$ cd /scratch/p/pheron/skyler1/cesm/cime/config/cesm/machines/config_machines.xml
+bash: cd: /scratch/p/pheron/skyler1/cesm/cime/config/cesm/machines/config_machines.xml: Not a directory
+[skyler1@nia-login05 skyler1]$ cd ..
+[skyler1@nia-login05 pheron]$ cd ~
+[skyler1@nia-login05 ~]$ cd /scratch/p/pheron/skyler1/cesm/cime/config/cesm/machines/config_machines.xml
+bash: cd: /scratch/p/pheron/skyler1/cesm/cime/config/cesm/machines/config_machines.xml: Not a directory
+[skyler1@nia-login05 ~]$ /scratch/p/pheron/skyler1/cesm/cime/config/cesm/machines/config_machines.xml
+bash: /scratch/p/pheron/skyler1/cesm/cime/config/cesm/machines/config_machines.xml: Permission denied
+[skyler1@nia-login05 ~]$ cd /scratch/p/pheron/skyler1/cesm_cases/test.620
+[skyler1@nia-login05 test.620]$ ./case.setup
+ERROR: module command /scinet/niagara/software/2018a/lmod/lmod/libexec/lmod python load NiaEnv/2018a perl/5.20.3 cmake/3.10.3 git/2.16.3 subversion/1.9.7 intel/2018.3 openmpi/3.1.1 hdf5-mpi/1.10.2 netcdf-mpi/4.6.1 pnetcdf/1.9.0 failed with message:
+Lmod has detected the following error: The following module(s) are unknown: "git/2.16.3"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore-cache load "git/2.16.3"
+
+Also make sure that all modulefiles written in TCL start with the string #%Module
+[skyler1@nia-login05 test.620]$ cd ..
+[skyler1@nia-login05 cesm_cases]$ cd $SCRATCH
+[skyler1@nia-login05 skyler1]$ cd $SCRATCH/cesm/cime/scripts
+[skyler1@nia-login05 scripts]$ ./create_newcase --case $SCRATCH/cesm_cases/test2.620 --res f19_g17 --compset B1850 --mach niagara
+
+Compset longname is 1850_CAM60_CLM50%BGC-CROP_CICE_POP2%ECO%ABIO-DIC_MOSART_CISM2%NOEVOLVE_WW3_BGC%BDRD
+Compset specification file is /gpfs/fs0/scratch/p/pheron/skyler1/cesm/cime/../cime_config/config_compsets.xml
+Compset forcing is 1850
+Com forcing is Biogeochemistry intercomponent  with diagnostic CO2
+ATM component is CAM cam6 physics:
+LND component is clm5.0:BGC (vert. resol. CN and methane) with prognostic crop:
+ICE component is Sea ICE (cice) model version 5
+OCN component is POP2 EcosystemAbiotic DIC/DIC14
+ROF component is MOSART: MOdel for Scale Adaptive River Transport
+GLC component is cism2 (default, higher-order, can run in parallel):cism ice evolution turned off (this is the standard configuration unless you're explicitly interested in ice evolution):
+WAV component is Wave Watch
+ESP component is 
+Pes     specification file is /gpfs/fs0/scratch/p/pheron/skyler1/cesm/cime/../cime_config/config_pes.xml
+Compset specific settings: name is RUN_STARTDATE and value is 0001-01-01
+Compset specific settings: name is RUN_REFDATE and value is 0301-01-01
+Compset specific settings: name is RUN_TYPE and value is hybrid
+Compset specific settings: name is RUN_REFCASE and value is b.e20.B1850.f19_g17.release_cesm2_1_0.020
+Compset specific settings: name is CLM_NAMELIST_OPTS and value is use_init_interp=.true.
+Could not find machine match for 'nia-login05.scinet.local' or 'nia-login05.scinet.local'
+Machine is niagara
+Pes setting: grid match    is a%1.9x2.5.+l%1.9x2.5.+oi%gx1 
+Pes setting: grid          is a%1.9x2.5_l%1.9x2.5_oi%gx1v7_r%r05_g%gland4_w%ww3a_m%gx1v7 
+Pes setting: compset       is 1850_CAM60_CLM50%BGC-CROP_CICE_POP2%ECO%ABIO-DIC_MOSART_CISM2%NOEVOLVE_WW3_BGC%BDRD 
+Pes setting: tasks       is {'NTASKS_ATM': -4, 'NTASKS_ICE': -2, 'NTASKS_CPL': -4, 'NTASKS_LND': -2, 'NTASKS_WAV': -1, 'NTASKS_ROF': -2, 'NTASKS_OCN': -2, 'NTASKS_GLC': -1} 
+Pes setting: threads     is {'NTHRDS_ICE': 1, 'NTHRDS_ATM': 1, 'NTHRDS_ROF': 1, 'NTHRDS_LND': 1, 'NTHRDS_WAV': 1, 'NTHRDS_OCN': 1, 'NTHRDS_CPL': 1, 'NTHRDS_GLC': 1} 
+Pes setting: rootpe      is {'ROOTPE_OCN': -4, 'ROOTPE_LND': 0, 'ROOTPE_ATM': 0, 'ROOTPE_ICE': -2, 'ROOTPE_WAV': 0, 'ROOTPE_CPL': 0, 'ROOTPE_ROF': 0, 'ROOTPE_GLC': 0} 
+Pes setting: pstrid      is {} 
+Pes other settings: {}
+Pes comments: none
+ Compset is: 1850_CAM60_CLM50%BGC-CROP_CICE_POP2%ECO%ABIO-DIC_MOSART_CISM2%NOEVOLVE_WW3_BGC%BDRD 
+ Grid is: a%1.9x2.5_l%1.9x2.5_oi%gx1v7_r%r05_g%gland4_w%ww3a_m%gx1v7 
+ Components in compset are: ['cam', 'clm', 'cice', 'pop', 'mosart', 'cism', 'ww3', 'sesp', 'drv', 'dart'] 
+
+This is a CESM scientifically supported compset at this resolution.
+
+Using project from env PROJECT: /your.group.does.not.have.a.project.allocation.on.Niagara/
+No charge_account info available, using value from PROJECT
+Using project from env PROJECT: /your.group.does.not.have.a.project.allocation.on.Niagara/
+cesm model version found: cesm2.1.3-rc.01
+Batch_system_type is slurm
+job is case.run USER_REQUESTED_WALLTIME None USER_REQUESTED_QUEUE None WALLTIME_FORMAT %H:%M:%S
+job is case.st_archive USER_REQUESTED_WALLTIME None USER_REQUESTED_QUEUE None WALLTIME_FORMAT %H:%M:%S
+ Creating Case directory /scratch/p/pheron/skyler1/cesm_cases/test2.620
+[skyler1@nia-login05 scripts]$ 
+[skyler1@nia-login05 scripts]$ cd $SCRATCH
+[skyler1@nia-login05 skyler1]$ cd $SCRATCH/cesm_cases/test2.620
+[skyler1@nia-login05 test2.620]$ ./case.setup
+ERROR: module command /scinet/niagara/software/2018a/lmod/lmod/libexec/lmod python load NiaEnv/2018a perl/5.20.3 cmake/3.10.3 git/2.39.1 subversion/1.9.7 intel/2018.3 openmpi/3.1.1 hdf5-mpi/1.10.2 netcdf-mpi/4.6.1 pnetcdf/1.9.0 failed with message:
+Due to MODULEPATH changes, the following have been reloaded:
+  1) git/2.39.1
+
+The following have been reloaded with a version change:
+  1) NiaEnv/2019b => NiaEnv/2018a
+[skyler1@nia-login05 test2.620]$ nano ~/.modulesrc
+[skyler1@nia-login05 test2.620]$ module purge
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) NiaEnv/2019b
+[skyler1@nia-login05 test2.620]$ module load NiaEnv/2018a
+
+The following have been reloaded with a version change:
+  1) NiaEnv/2019b => NiaEnv/2018a
+
+[skyler1@nia-login05 test2.620]$ module spider NiaEnv
+
+------------------------------------------------------------------------------------------------------------------------------
+  NiaEnv:
+------------------------------------------------------------------------------------------------------------------------------
+    Description:
+      Software modules for Niagara. Must be loaded to see Niagara modules in 'module spider' (loaded by default).
+
+     Versions:
+        NiaEnv/2018a
+        NiaEnv/2019b
+        NiaEnv/2022a
+
+------------------------------------------------------------------------------------------------------------------------------
+  For detailed information about a specific "NiaEnv" package (including how to load the modules) use the module's full name.
+  Note that names that have a trailing (E) are extensions provided by other modules.
+  For example:
+
+     $ module spider NiaEnv/2022a
+------------------------------------------------------------------------------------------------------------------------------
+
+ 
+
+[skyler1@nia-login05 test2.620]$ module spider git
+
+------------------------------------------------------------------------------------------------------------------------------
+  git: git/2.39.1
+------------------------------------------------------------------------------------------------------------------------------
+    Description:
+      Git is a free and open source distributed version control system.
+
+
+     Other possible modules matches:
+        git-annex, git-lfs
+
+    This module can be loaded directly: module load git/2.39.1
+
+    Help:
+      
+      Git is a free and open source distributed version control system
+      designed to handle everything from small to very large projects with
+      speed and efficiency.
+      
+      Homepage: http://git-scm.com
+      
+
+------------------------------------------------------------------------------------------------------------------------------
+  To find other possible module matches execute:
+
+      $ module -r spider '.*git.*'
+
+
+ 
+
+[skyler1@nia-login05 test2.620]$ module -r spider 'git/2.16.3'
+Lmod has detected the following error:  Unable to find: "git/2.16.3".
+
+
+
+[skyler1@nia-login05 test2.620]$ ./case.setup
+Setting resource.RLIMIT_STACK to -1 from (8388608, -1)
+/scratch/p/pheron/skyler1/cesm_cases/test2.620/env_mach_specific.xml already exists, delete to replace
+job is case.run USER_REQUESTED_WALLTIME None USER_REQUESTED_QUEUE None WALLTIME_FORMAT %H:%M:%S
+Creating batch scripts
+Writing case.run script from input template /gpfs/fs0/scratch/p/pheron/skyler1/cesm/cime/config/cesm/machines/template.case.run
+Creating file .case.run
+Writing case.st_archive script from input template /gpfs/fs0/scratch/p/pheron/skyler1/cesm/cime/config/cesm/machines/template.st_archive
+Creating file case.st_archive
+Creating user_nl_xxx files for components and cpl
+If an old case build already exists, might want to run 'case.build --clean' before building
+You can now run './preview_run' to get more info on how your case will be run
+[skyler1@nia-login05 test2.620]$ ./preview_run
+CASE INFO:
+  nodes: 6
+  total tasks: 480
+  tasks per node: 80
+  thread count: 1
+
+BATCH INFO:
+  FOR JOB: case.run
+    ENV:
+      module command is /scinet/niagara/software/2018a/lmod/lmod/libexec/lmod python load NiaEnv/2018a perl/5.20.3 cmake/3.10.3 git/2.39.1 subversion/1.9.7 intel/2018.3 openmpi/3.1.1 hdf5-mpi/1.10.2 netcdf-mpi/4.6.1 pnetcdf/1.9.0
+      Setting Environment OMP_STACKSIZE=512M
+      Setting Environment OMP_NUM_THREADS=1
+
+    SUBMIT CMD:
+      ssh -n nia-login01 cd /scratch/p/pheron/skyler1/cesm_cases/test2.620 ; sbatch --time 24:00:00 -p compute .case.run --resubmit
+
+    MPIRUN (job=case.run):
+      mpirun  -np 480  --use-hwthread-cpus /scratch/p/pheron/skyler1/cesm2_1_3/runs//test2.620/bld/cesm.exe  >> cesm.log.$LID 2>&1 
+
+  FOR JOB: case.st_archive
+    ENV:
+      module command is /scinet/niagara/software/2018a/lmod/lmod/libexec/lmod python load NiaEnv/2018a perl/5.20.3 cmake/3.10.3 git/2.39.1 subversion/1.9.7 intel/2018.3 openmpi/3.1.1 hdf5-mpi/1.10.2 netcdf-mpi/4.6.1 pnetcdf/1.9.0
+      Setting Environment OMP_STACKSIZE=512M
+      Setting Environment OMP_NUM_THREADS=1
+
+    SUBMIT CMD:
+      ssh -n nia-login01 cd /scratch/p/pheron/skyler1/cesm_cases/test2.620 ; sbatch --time 0:20:00 -p compute  --dependency=afterok:0 case.st_archive --resubmit
+
+[skyler1@nia-login05 test2.620]$ ls
+archive_metadata       case.qstatus     check_case        env_build.xml          env_workflow.xml   preview_run               user_nl_cam   user_nl_mosart
+Buildconf              case.setup       check_input_data  env_case.xml           LockedFiles        README.case               user_nl_cice  user_nl_pop
+case.build             case.st_archive  Depends.intel     env_mach_pes.xml       Macros.make        software_environment.txt  user_nl_cism  user_nl_ww
+case.cmpgen_namelists  CaseStatus       env_archive.xml   env_mach_specific.xml  pelayout           SourceMods                user_nl_clm   xmlchange
+CaseDocs               case.submit      env_batch.xml     env_run.xml            preview_namelists  Tools                     user_nl_cpl   xmlquery
+[skyler1@nia-login05 test2.620]$ less user_nl_cam
+[skyler1@nia-login05 test2.620]$ ./preview_namelists
+Setting resource.RLIMIT_STACK to -1 from (8388608, -1)
+Refcase not found in /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01, will attempt to download from inputdata
+Checking server ftp://gridanon.cgd.ucar.edu:2811/cesm/inputdata/ with protocol gftp
+Setting resource.RLIMIT_STACK to -1 from (-1, -1)
+Client protocol gftp not enabled
+Checking server ftp://ftp.cgd.ucar.edu/cesm/inputdata with protocol wget
+Setting resource.RLIMIT_STACK to -1 from (-1, -1)
+Using protocol wget with user anonymous and passwd user@example.edu
+Loading input file list: 'Buildconf/refcase.input_data_list'
+  Model refcase missing file refdir = '/scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/'
+Trying to download file: 'cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01' to path '/scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01' using WGET protocol.
+Creating directory /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01
+SUCCESS
+
+ERROR: Failed to find or download file /scratch/p/pheron/skyler1/cesm2_1_3/runs//test2.620/run/inputdata_checksum.dat
+[skyler1@nia-login05 test2.620]$ ls -ld /scratch/p/pheron/skyler1/cesm2_1_3/runs//test2.620/run/
+drwxr-s--- 2 skyler1 pheron 4096 Jun 20 14:58 /scratch/p/pheron/skyler1/cesm2_1_3/runs//test2.620/run/
+[skyler1@nia-login05 test2.620]$ mkdir -p /scratch/p/pheron/skyler1/cesm2_1_3/runs//test2.620/run/
+[skyler1@nia-login05 test2.620]$ chmod -R 755 /scratch/p/pheron/skyler1/cesm2_1_3/runs//test2.620/run/
+mode of ‘/scratch/p/pheron/skyler1/cesm2_1_3/runs//test2.620/run/’ changed from 2750 (rwxr-s---) to 2755 (rwxr-sr-x)
+mode of ‘/scratch/p/pheron/skyler1/cesm2_1_3/runs//test2.620/run/CASEROOT’ changed from 0640 (rw-r-----) to 0755 (rwxr-xr-x)
+[skyler1@nia-login05 test2.620]$ ./preview_namelists
+Setting resource.RLIMIT_STACK to -1 from (8388608, -1)
+ - Prestaging REFCASE (/scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01) to /scratch/p/pheron/skyler1/cesm2_1_3/runs//test2.620/run
+Copy rpointer /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/rpointer.ocn.restart
+Copy rpointer /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/rpointer.ice
+Copy rpointer /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/rpointer.lnd
+Copy rpointer /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/rpointer.rof
+Copy rpointer /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/rpointer.atm
+Copy rpointer /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/rpointer.ocn.tavg.5
+Copy rpointer /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/rpointer.glc
+Copy rpointer /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/rpointer.ocn.ovf
+Copy rpointer /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/rpointer.drv
+Staging file /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/b.e20.B1850.f19_g17.release_cesm2_1_0.020.pop.ro.0301-01-01-00000
+Staging file /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/b.e20.B1850.f19_g17.release_cesm2_1_0.020.mosart.r.0301-01-01-00000.nc
+Staging file /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/b.e20.B1850.f19_g17.release_cesm2_1_0.020.cpl.r.0301-01-01-00000.nc
+Staging file /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/b.e20.B1850.f19_g17.release_cesm2_1_0.020.pop.r.0301-01-01-00000.nc
+Staging file /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/b.e20.B1850.f19_g17.release_cesm2_1_0.020.cam.r.0301-01-01-00000.nc
+Staging file /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/b.e20.B1850.f19_g17.release_cesm2_1_0.020.cice.r.0301-01-01-00000.nc
+Staging file /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/b.e20.B1850.f19_g17.release_cesm2_1_0.020.cam.rs.0301-01-01-00000.nc
+Staging file /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/b.e20.B1850.f19_g17.release_cesm2_1_0.020.clm2.r.0301-01-01-00000.nc
+Staging file /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/b.e20.B1850.f19_g17.release_cesm2_1_0.020.cam.i.0301-01-01-00000.nc
+Staging file /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/b.e20.B1850.f19_g17.release_cesm2_1_0.020.cism.r.0301-01-01-00000.nc
+Staging file /scratch/p/pheron/skyler1/cesm/inputdata/cesm2_init/b.e20.B1850.f19_g17.release_cesm2_1_0.020/0301-01-01/b.e20.B1850.f19_g17.release_cesm2_1_0.020.ww3.r.0301-01-01-00000
+Creating component namelists
+   Calling /gpfs/fs0/scratch/p/pheron/skyler1/cesm/components/cam//cime_config/buildnml
+     ...calling cam buildcpp to set build time options
+CAM namelist copy: file1 /scratch/p/pheron/skyler1/cesm_cases/test2.620/Buildconf/camconf/atm_in file2 /scratch/p/pheron/skyler1/cesm2_1_3/runs//test2.620/run/atm_in 
+   Calling /gpfs/fs0/scratch/p/pheron/skyler1/cesm/components/clm//cime_config/buildnml
+   Calling /gpfs/fs0/scratch/p/pheron/skyler1/cesm/components/cice//cime_config/buildnml
+     ...buildnml calling cice buildcpp to set build time options
+File not found: grid_file = "/scratch/p/pheron/skyler1/cesm/inputdata/ocn/pop/gx1v7/grid/horiz_grid_20010402.ieeer8", will attempt to download in check_input_data phase
+File not found: kmt_file = "/scratch/p/pheron/skyler1/cesm/inputdata/ocn/pop/gx1v7/grid/topography_20161215.ieeei4", will attempt to download in check_input_data phase
+   Calling /gpfs/fs0/scratch/p/pheron/skyler1/cesm/components/pop//cime_config/buildnml
+     ... buildnml: calling pop buildcpp to set build time options
+   Calling /gpfs/fs0/scratch/p/pheron/skyler1/cesm/components/mosart//cime_config/buildnml
+File not found: frivinp_rtm = "/scratch/p/pheron/skyler1/cesm/inputdata/rof/mosart/MOSART_routing_Global_0.5x0.5_c170601.nc", will attempt to download in check_input_data phase
+   Running /gpfs/fs0/scratch/p/pheron/skyler1/cesm/components/cism//cime_config/buildnml 
+   Calling /gpfs/fs0/scratch/p/pheron/skyler1/cesm/components/ww3//cime_config/buildnml
+File not found: prestage_wind = "/scratch/p/pheron/skyler1/cesm/inputdata/wav/ww3/core2_G4_wns_30min_20000601_to_05.nc", will attempt to download in check_input_data phase
+File not found: prestage_mod_def = "/scratch/p/pheron/skyler1/cesm/inputdata/wav/ww3/G4L1.mod_def.ww3.121031", will attempt to download in check_input_data phase
+File not found: initfile = "/scratch/p/pheron/skyler1/cesm/inputdata/wav/ww3/restart.ww3.init.seed", will attempt to download in check_input_data phase
+   Calling /gpfs/fs0/scratch/p/pheron/skyler1/cesm/cime/src/components/stub_comps/sesp/cime_config/buildnml
+   Calling /gpfs/fs0/scratch/p/pheron/skyler1/cesm/cime/src/drivers/mct/cime_config/buildnml
+File not found: atm2ocn_fmapname = "cpl/gridmaps/fv1.9x2.5/map_fv1.9x2.5_TO_gx1v7_aave.181205.nc", will attempt to download in check_input_data phase
+File not found: atm2ocn_smapname = "cpl/gridmaps/fv1.9x2.5/map_fv1.9x2.5_TO_gx1v7_blin.181205.nc", will attempt to download in check_input_data phase
+File not found: atm2ocn_vmapname = "cpl/gridmaps/fv1.9x2.5/map_fv1.9x2.5_TO_gx1v7_patc.181205.nc", will attempt to download in check_input_data phase
+File not found: ocn2atm_fmapname = "cpl/gridmaps/gx1v7/map_gx1v7_TO_fv1.9x2.5_aave.181205.nc", will attempt to download in check_input_data phase
+File not found: ocn2atm_smapname = "cpl/gridmaps/gx1v7/map_gx1v7_TO_fv1.9x2.5_aave.181205.nc", will attempt to download in check_input_data phase
+File not found: atm2ice_fmapname = "cpl/gridmaps/fv1.9x2.5/map_fv1.9x2.5_TO_gx1v7_aave.181205.nc", will attempt to download in check_input_data phase
+File not found: atm2ice_smapname = "cpl/gridmaps/fv1.9x2.5/map_fv1.9x2.5_TO_gx1v7_blin.181205.nc", will attempt to download in check_input_data phase
+File not found: atm2ice_vmapname = "cpl/gridmaps/fv1.9x2.5/map_fv1.9x2.5_TO_gx1v7_patc.181205.nc", will attempt to download in check_input_data phase
+File not found: ice2atm_fmapname = "cpl/gridmaps/gx1v7/map_gx1v7_TO_fv1.9x2.5_aave.181205.nc", will attempt to download in check_input_data phase
+File not found: ice2atm_smapname = "cpl/gridmaps/gx1v7/map_gx1v7_TO_fv1.9x2.5_aave.181205.nc", will attempt to download in check_input_data phase
+File not found: lnd2rof_fmapname = "lnd/clm2/mappingdata/maps/1.9x2.5/map_1.9x2.5_nomask_to_0.5x0.5_nomask_aave_da_c120522.nc", will attempt to download in check_input_data phase
+File not found: rof2lnd_fmapname = "lnd/clm2/mappingdata/maps/1.9x2.5/map_0.5x0.5_nomask_to_1.9x2.5_nomask_aave_da_c120709.nc", will attempt to download in check_input_data phase
+File not found: rof2ocn_fmapname = "cpl/gridmaps/r05/map_r05_TO_gx1v7_aave.161012.nc", will attempt to download in check_input_data phase
+File not found: glc2ocn_liq_rmapname = "cpl/gridmaps/gland4km/map_gland4km_to_gx1v7_nn_open_ocean_nnsm_e1000r300_marginal_sea_171105.nc", will attempt to download in check_input_data phase
+File not found: glc2ocn_ice_rmapname = "cpl/gridmaps/gland4km/map_gland4km_to_gx1v7_nnsm_e1000r300_171105.nc", will attempt to download in check_input_data phase
+File not found: rof2ocn_liq_rmapname = "cpl/gridmaps/r05/map_r05_to_gx1v7_nn_open_ocean_nnsm_e1000r300_marginal_sea_170413.nc", will attempt to download in check_input_data phase
+File not found: rof2ocn_ice_rmapname = "cpl/gridmaps/r05/map_r05_to_gx1v7_nnsm_e1000r300_170413.nc", will attempt to download in check_input_data phase
+File not found: lnd2glc_fmapname = "cpl/gridmaps/fv1.9x2.5/map_fv1.9x2.5_TO_gland4km_aave.170429.nc", will attempt to download in check_input_data phase
+File not found: lnd2glc_smapname = "cpl/gridmaps/fv1.9x2.5/map_fv1.9x2.5_TO_gland4km_blin.170429.nc", will attempt to download in check_input_data phase
+File not found: glc2lnd_fmapname = "cpl/gridmaps/gland4km/map_gland4km_TO_fv1.9x2.5_aave.170429.nc", will attempt to download in check_input_data phase
+File not found: glc2lnd_smapname = "cpl/gridmaps/gland4km/map_gland4km_TO_fv1.9x2.5_aave.170429.nc", will attempt to download in check_input_data phase
+File not found: atm2wav_smapname = "cpl/gridmaps/fv1.9x2.5/map_fv1.9x2.5_TO_ww3a_bilin_140702.nc", will attempt to download in check_input_data phase
+File not found: ocn2wav_smapname = "cpl/gridmaps/gx1v7/map_gx1v7_TO_ww3a_splice_170214.nc", will attempt to download in check_input_data phase
+File not found: ice2wav_smapname = "cpl/gridmaps/gx1v7/map_gx1v7_TO_ww3a_splice_170214.nc", will attempt to download in check_input_data phase
+File not found: wav2ocn_smapname = "cpl/gridmaps/ww3a/map_ww3a_TO_gx1v7_splice_170214.nc", will attempt to download in check_input_data phase
+Finished creating component namelists
+[skyler1@nia-login05 test2.620]$ 
