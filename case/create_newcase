@@ -67,5 +67,9 @@ Creating user_nl_xxx files for components and cpl
 If an old case build already exists, might want to run 'case.build --clean' before building
 You can now run './preview_run' to get more info on how your case will be run
 
-#edit env_run.xml in case
-
+#edit env_run.xml in case(could use xmlchange or edit the file directly)
+#run ./preview_namelists 
+#edit namelists(customize
+# optional, run ./preview_namelists to see any changes.
+#run ./case.build to build the cases
+#run ./case.submit
