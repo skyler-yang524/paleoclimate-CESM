@@ -1,2 +1,27 @@
 The first submission gives the error on: 
 the second case was created to check if one line to be deleted and see if it works. 
+## There are some solutions which might help to solve the issue:
+1. Delete '' and see if the case could be built up successfully.
+Result: After deleting the line, the case couldn't be set up. (RUN ./case.setup failed)
+2. Try manually load all required modules after uninstalling all modules. 
+Process: RUN module purge to uninstall 
+and RUN: 
+module load NiaEnv/2018a
+module load perl/5.20.3
+module load cmake/3.10.3
+module load git/2.39.1
+module load subversion/1.9.7
+module load intel/2018.3
+module load openmpi/3.1.1
+module load hdf5-mpi/1.10.2
+module load netcdf-mpi/4.6.1
+module load pnetcdf/1.9.0; 
+to verify, run: 
+module list;
+Submit the job
+Result: Not avaiable yet.
+3.The other possibility might due to module environment NiaEnv/2018a is not set up by default(according to Niagara CESM github, it might be neccessary to set NiaEnv/2018a instead of NiaEnv/2019b.)
+Prcoess:RUN nano ~/.bashrc and add 'module load NiaEnv/2018a' to the file, apply the change by sourcing the file: source ~/.bashrc.
+To verify, close the tab and restart the window to see what is the default version right now: RUN 'module --default avail'
+Then submit the job.
+Result: Not avaiable yet. 
