@@ -1,0 +1,7 @@
+To start from simpler model is always the best starting point after porting process: 
+I followed the NCAR webpage(which had step-by-step instruction on simpler model run), you should be good to follow the instruction.
+Here is the NCAR link on simpler model run: https://www.cesm.ucar.edu/models/simple. 
+
+
+**NOTE:**
+Remember to verify CIME has been correctly ported into the new platform. Check NCAR webpage: https://esmci.github.io/cime/versions/ufs_release_v1.0/html/users_guide/porting-cime.html
