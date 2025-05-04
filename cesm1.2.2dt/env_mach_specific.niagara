@@ -1,0 +1,21 @@
+#! /bin/csh -f
+
+#-------------------------------------------------------------------------------
+
+#source /opt/modules/default/init/csh
+
+source /scinet/niagara/software/2018a/lmod/lmod/init/csh
+module --force purge
+module load NiaEnv/2018a
+module load perl/5.26.1
+module load cmake/3.10.3
+module load intel/2018.2
+module load intelmpi/2018.2
+module load hdf5-mpi/1.8.20
+module load netcdf-mpi/4.6.1
+module load subversion
+# Set paths
+setenv NETCDF_PATH ${SCINET_NETCDF_MPI_ROOT}
+setenv INC_NETCDF ${NETCDF_PATH}/include
+setenv LIB_NETCDF ${NETCDF_PATH}/lib
+
